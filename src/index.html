@@ -40,7 +40,17 @@
 
             document.getElementById('content').innerHTML = text;
         });
+ 
+        if (navigator.storage && navigator.storage.estimate) {
+            const quota = await navigator.storage.estimate();
+            // quota.usage -> Number of bytes used.
+            // quota.quota -> Maximum number of bytes available.
+            const percentageUsed = (quota.usage / quota.quota) * 100;  
+            const remaining = quota.quota - quota.usage;
 
+            document.getElementById('used').innerHTML = `You've used ${percentageUsed}% of the available storage.`;
+            document.getElementById('available').innerHTML = `You can write up to ${remaining} more bytes.`;
+        }
 
         // function openFileSystem(func) {
         //     if ('getDirectory' in navigator?.storage) {
@@ -79,6 +89,8 @@
 
 <body>
   <span id="content" style="font-size: 40px"></span>
+  <span id="used" style="font-size: 40px"></span>
+  <span id="available" style="font-size: 40px"></span>
 </body>
 
 </html>
