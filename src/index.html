@@ -16,14 +16,17 @@
                 (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
             );
         }
+        window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+      
+        window.directoryEntry = window.directoryEntry || window.webkitDirectoryEntry;
+
+        console.log(`window.directoryEntry: ${window.directoryEntry}`);
 
         navigator.storage.getDirectory().then(async (handle) => {
             console.log(typeof handle);
             console.log(handle);
             
-            var fileHandle = await handle.getFileHandle("hi.txt", { create: true });
-
-            
+            var fileHandle = await handle.getFileHandle("hi.txt", { create: true }); 
 
             var filestream = await fileHandle.createWritable();
 
@@ -37,6 +40,39 @@
 
             document.getElementById('content').innerHTML = text;
         });
+
+
+        // function openFileSystem(func) {
+        //     if ('getDirectory' in navigator?.storage) {
+        //         navigator.storage.getDirectory(func);
+        //         return;l
+        //     }
+
+        //     window.requestFileSystem =window.requestFileSystem || window.webkitRequestFileSystem;
+
+        //     window.requestFileSystem("TEMPORARY", 1024 * 1024 * 200 (fs: ) => {
+        //         func()
+        //     });
+        // }
+ 
+        // function VirtualFileSystem() {
+        //     this.kind = null;
+
+        //     if ('getDirectory' in navigator?.storage) {
+        //         this.kind = "standard";
+        //         navigator.storage.getDirectory(func);
+        //     } else {
+        //         this.kind = "hacky";
+
+        //         window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+        //         window.directoryEntry = window.directoryEntry || window.webkitDirectoryEntry;
+
+        //         window.requestFileSystem("TEMPORARY", 1024 * 1024 * 200 (fs: ) => {
+        //             func()
+        //         });
+        //     }
+        // }
+
  
     </script>
 </head>
