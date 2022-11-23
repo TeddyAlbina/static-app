@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no viewport-fit=cover" />
+  
+    <title>MindCompass Conductor</title>
+    <base href="/" />
+ 
+ 
+    <script type="text/javascript">
+
+       function guid() {
+            return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+                (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+            );
+        }
+
+        navigator.storage.getDirectory().then(async (handle) => {
+            console.log(typeof handle);
+            console.log(handle);
+            
+            var fileHandle = await handle.getFileHandle("hi.txt", { create: true });
+
+            
+
+            var filestream = await fileHandle.createWritable();
+
+            await filestream.write(`Hello moto - random: ${guid()}`);
+
+            await filestream.close();
+
+            var file = await fileHandle.getFile();
+
+            var text = await file.text();
+
+            document.getElementById('content').innerHTML = text;
+        });
+ 
+    </script>
+</head>
+
+<body>
+  <span id="content" style="font-size: 40px"></span>
+</body>
+
+</html>
