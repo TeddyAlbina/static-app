@@ -41,13 +41,15 @@
 </head>
 
 <body onload="hello()">  
-  <div>
+  <!-- <div>
     <video id="webcamFeed" muted crossorigin="anonymous" width="1280" height="720" playsinline />
-  </div>  
+  </div>   -->
+
+
   <div>
     
     <div class="videoWrapper">
-        <video id="shit" controls="false" loop crossorigin="anonymous" src="Stimulus 8.m4v" />
+        <video id="shit" autoplay controls="false" loop crossorigin="anonymous" src="Stimulus 8.m4v" />
     </div>
   </div>
   <script>  
@@ -69,27 +71,27 @@
 
         
 
-        navigator.mediaDevices.getUserMedia({ video: { width: 1280, height: 720, facingMode: 'user' }, audio: true }).then((stream) => {
-            var webcamFeed = document.getElementById("webcamFeed");
-            webcamFeed.srcObject = stream;
+        // navigator.mediaDevices.getUserMedia({ video: { width: 1280, height: 720, facingMode: 'user' }, audio: true }).then((stream) => {
+        //     var webcamFeed = document.getElementById("webcamFeed");
+        //     webcamFeed.srcObject = stream;
 
-            webcamFeed.addEventListener('error', () => {
-                console.error('webcam feed error');
-            });
+        //     webcamFeed.addEventListener('error', () => {
+        //         console.error('webcam feed error');
+        //     });
 
-            webcamFeed.addEventListener('pause', (event) => {
-                console.error('webcam feed paused');
-            });
+        //     webcamFeed.addEventListener('pause', (event) => {
+        //         console.error('webcam feed paused');
+        //     });
 
-            webcamFeed.addEventListener('playing', (event) => {
-                console.log('webcam is plaing');
-            });
+        //     webcamFeed.addEventListener('playing', (event) => {
+        //         console.log('webcam is plaing');
+        //     });
 
-            console.log("Start playing video");
-            webcamFeed.play();
+        //     console.log("Start playing video");
+        //     webcamFeed.play();
 
-            shit.play();
-        });
+        //     shit.play();
+        // });
     }
 </script>
 </body>
