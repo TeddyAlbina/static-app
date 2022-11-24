@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no viewport-fit=cover" />
+  
+    <title>MindCompass Conductor</title>
+    <base href="/" />
+
+    <script>
+        (async function() {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: { width: 1280, height: 720, facingMode: 'user' }, audio: true });
+            var webcamFeed = document.getElementById("webcamFeed");
+            webcamFeed.srcObject = stream;
+
+            webcamFeed.addEventListener('error', () => {
+                console.error('webcam feed error');
+            });
+
+            webcamFeed.aaddEventListener('pause', (event) => {
+                console.error('webcam feed paused');
+            });
+
+            webcamFeed.addEventListener('playing', (event) => {
+                console.log('webcam is plaing');
+            });
+
+            console.log("Start playing video");
+            webcamFeed.play();
+        })();
+
+    
+    </script>
+</head>
+
+<body>
+  <video id="webcamFeed" muted crossorigin="anonymous" width="1280" height="720" playsinline />
+  <video src="Whitebaseline.m4v" autoplay loop width="1280" height="720" />
+</body>
+
+</html>
