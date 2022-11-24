@@ -29,25 +29,27 @@
     <video id="shit" muted src="Whitebaseline.m4v"   loop width="1280" height="720" />
   </div>
   <script>
-    async function hello() {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { width: 1280, height: 720, facingMode: 'user' }, audio: true });
-        var webcamFeed = document.getElementById("webcamFeed");
-        webcamFeed.srcObject = stream;
+      function hello() {
+        navigator.mediaDevices.getUserMedia({ video: { width: 1280, height: 720, facingMode: 'user' }, audio: true }).then((stream) => {
+            var webcamFeed = document.getElementById("webcamFeed");
+            webcamFeed.srcObject = stream;
 
-        webcamFeed.addEventListener('error', () => {
-            console.error('webcam feed error');
+            webcamFeed.addEventListener('error', () => {
+                console.error('webcam feed error');
+            });
+
+            webcamFeed.addEventListener('pause', (event) => {
+                console.error('webcam feed paused');
+            });
+
+            webcamFeed.addEventListener('playing', (event) => {
+                console.log('webcam is plaing');
+            });
+
+            console.log("Start playing video");
+            webcamFeed.play();
         });
 
-        webcamFeed.addEventListener('pause', (event) => {
-            console.error('webcam feed paused');
-        });
-
-        webcamFeed.addEventListener('playing', (event) => {
-            console.log('webcam is plaing');
-        });
-
-        console.log("Start playing video");
-        webcamFeed.play();
         
         var shit = document.getElementById("shit");
         shit.play();
