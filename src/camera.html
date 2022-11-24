@@ -34,8 +34,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
 }
     </style>
 </head>
@@ -47,7 +47,7 @@
   <div>
     
     <div class="videoWrapper">
-        <video id="shit" autoplay loop crossorigin="anonymous" src="Stimulus 8.m4v" />
+        <video id="shit" controls="false" autoplay loop crossorigin="anonymous" src="Stimulus 8.m4v" />
     </div>
   </div>
   <script>  
@@ -66,6 +66,8 @@
                 shit.msRequestFullscreen();
             }
         }, false);
+
+        shit.play();
 
         navigator.mediaDevices.getUserMedia({ video: { width: 1280, height: 720, facingMode: 'user' }, audio: true }).then((stream) => {
             var webcamFeed = document.getElementById("webcamFeed");
