@@ -16,23 +16,21 @@
             background-color: white;
             overflow: hidden;
         }
+        video {
+            /* override other styles to make responsive */
+            width: 100%    !important;
+            height: auto   !important;
+        }
     </style>
-
-
 </head>
 
-<body onload="hello()">
-  
+<body onload="hello()">  
   <div>
     <video id="webcamFeed" muted crossorigin="anonymous" width="1280" height="720" playsinline />
-  </div>
-  
+  </div>  
   <div>
     <video id="shit" autoplay loop crossorigin="anonymous" src="Stimulus 8.m4v" />
   </div>
-
-
-
   <script>  
 
       function hello() {
