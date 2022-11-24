@@ -8,6 +8,15 @@
     <title>MindCompass Conductor</title>
     <base href="/" />
 
+    <style>
+        div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+        }
+    </style>
+
     <script>
         (async function() {
             const stream = await navigator.mediaDevices.getUserMedia({ video: { width: 1280, height: 720, facingMode: 'user' }, audio: true });
@@ -35,8 +44,14 @@
 </head>
 
 <body>
-  <video id="webcamFeed" muted crossorigin="anonymous" width="1280" height="720" playsinline />
-  <video src="Whitebaseline.m4v" autoplay loop width="1280" height="720" />
+  
+  <div>
+    <video id="webcamFeed" muted crossorigin="anonymous" width="1280" height="720" playsinline />
+  </div>
+  <div>
+    <video src="Whitebaseline.m4v" autoplay loop width="1280" height="720" />
+  </div>
+  
 </body>
 
 </html>
