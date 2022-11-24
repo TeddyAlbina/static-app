@@ -27,31 +27,34 @@
             height: auto   !important;
         }
         .videoWrapper {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  height: 0;
-}
-.videoWrapper video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 50%;
-}
-html:-moz-full-screen {
-background: white;
-}
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+        }
+        .videoWrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 50%;
+        }
+        html:-moz-full-screen {
+            background: white;
+        }
 
-html:-webkit-full-screen {
-background: white;
-}
-html:-ms-fullscreen {
-background: white; 
-}
+        html:-webkit-full-screen {
+            background: white;
+        }
+        html:-ms-fullscreen {
+            background: white; 
+        }
 
-html:fullscreen {
-background: white;
-}
+        html:fullscreen {
+            background: white;
+        }
+        :fullscreen, ::backdrop {
+            background-color: white;
+        }
     </style>
 </head>
 
