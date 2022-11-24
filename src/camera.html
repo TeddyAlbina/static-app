@@ -38,11 +38,11 @@
             console.log("Start playing video");
             webcamFeed.play();
 
-            var shit = document.getElementById("shit");
-            shit.play();
+
         })();
 
-    
+        var shit = document.getElementById("shit");
+        shit.play();
     </script>
 </head>
 
@@ -52,7 +52,7 @@
     <video id="webcamFeed" muted crossorigin="anonymous" width="1280" height="720" playsinline />
   </div>
   <div>
-    <video id="shit" src="Whitebaseline.m4v"   loop width="1280" height="720" />
+    <video id="shit" muted src="Whitebaseline.m4v"   loop width="1280" height="720" />
   </div>
   
 </body>
