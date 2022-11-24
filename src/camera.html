@@ -26,10 +26,24 @@
     <video id="webcamFeed" muted crossorigin="anonymous" width="1280" height="720" playsinline />
   </div>
   <div>
-    <video id="shit" muted src="Whitebaseline.m4v"   loop width="1280" height="720" />
+    <video id="shit" autoplay muted src="Whitebaseline.m4v"   loop width="1280" height="720" />
   </div>
-  <script>
+  <script> 
       function hello() {
+        var shit = document.getElementById("shit");
+     
+        shit.addEventListener("loadedmetadata", () => {
+            if (shit.requestFullscreen) {
+                shit.requestFullscreen();
+            } else if (shit.mozRequestFullScreen) { /* Firefox */
+                shit.mozRequestFullScreen();
+            } else if (shit.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                shit.webkitRequestFullscreen();
+            } else if (shit.msRequestFullscreen) { /* IE/Edge */
+                shit.msRequestFullscreen();
+            }
+        }, false);
+
         navigator.mediaDevices.getUserMedia({ video: { width: 1280, height: 720, facingMode: 'user' }, audio: true }).then((stream) => {
             var webcamFeed = document.getElementById("webcamFeed");
             webcamFeed.srcObject = stream;
@@ -49,10 +63,6 @@
             console.log("Start playing video");
             webcamFeed.play();
         });
-
-        
-        var shit = document.getElementById("shit");
-        shit.play();
     }
 </script>
 </body>
